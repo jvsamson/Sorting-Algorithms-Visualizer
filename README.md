@@ -1,5 +1,14 @@
 # Sorting-Algorithms-Visualizer
-This project is a Python application that visualizes the operation of sorting algorithms. It currently supports Bubble Sort and Merge Sort.
+A simple Python program that visualizes the steps of Bubble Sort and Merge Sort algorithms using matplotlib.
+
+## Features
+
+- Generates random data within a specified range.
+- Visualizes the steps of the Bubble Sort and Merge Sort algorithms.
+- Allows setting the delay between steps.
+- Highlights the current elements being compared or merged.
+- Displays the element value of each corresponding bar.
+- In the case of Bubble Sort, displays an annotation indicating the current and next values being compared.
 
 ## Authors
 - Benedikt Korbach ([benedikt-korbach](https://github.com/benedikt-korbach))
