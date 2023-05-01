@@ -7,16 +7,7 @@ This project is a Python application that visualizes the operation of sorting al
 - Justus von Samson-Himmelstjerna ([jvsamson](https://github.com/jvsamson))
 - Alvaro Guijarro ([Alvaroguijarro97](https://github.com/Alvaroguijarro97))
 
-## Getting Started
-
-### Prerequisites
-
-Before running this application, make sure you have Python 3 and the following Python libraries installed:
-
-- matplotlib
-- tkinter
-
-### Running the Application
+## Running the Application
 To run the application, execute interface.py
 As an example, you might enter the following:
 
