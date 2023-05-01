@@ -10,12 +10,6 @@ A simple Python program that visualizes the steps of Bubble Sort and Merge Sort 
 - Displays the element value of each corresponding bar.
 - In the case of Bubble Sort, displays an annotation indicating the current and next values being compared.
 
-## Authors
-- Benedikt Korbach ([benedikt-korbach](https://github.com/benedikt-korbach))
-- Niklas Pawelzik ([nikpaw](https://github.com/nikpaw))
-- Justus von Samson-Himmelstjerna ([jvsamson](https://github.com/jvsamson))
-- Alvaro Guijarro ([Alvaroguijarro97](https://github.com/Alvaroguijarro97))
-
 ## Running the Application
 To run the application, execute interface.py
 As an example, you might enter the following:
@@ -25,3 +19,9 @@ As an example, you might enter the following:
 - Enter the end of the range: **100**
 - Which sorting algorithm do you want to use? (bubble/merge) **bubble**
 - What delay time do you want? **0.1**
+
+## Authors
+Benedikt Korbach ([benedikt-korbach](https://github.com/benedikt-korbach))
+Niklas Pawelzik ([nikpaw](https://github.com/nikpaw))
+Justus von Samson-Himmelstjerna ([jvsamson](https://github.com/jvsamson))
+Alvaro Guijarro ([Alvaroguijarro97](https://github.com/Alvaroguijarro97))
