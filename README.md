@@ -17,13 +17,7 @@ Before running this application, make sure you have Python 3 and the following P
 - tkinter
 
 ### Running the Application
-To run the application, execute interface.py:
-
-- The number of integers you want to sort.
-- The start and end of the range of integers.
-- The sorting algorithm you want to use (either "bubble" or "merge").
-- The delay time between each step of the animation.
-
+To run the application, execute interface.py
 As an example, you might enter the following:
 
 - How many integers do you want to sort? **30**
