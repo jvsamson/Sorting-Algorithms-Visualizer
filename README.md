@@ -22,6 +22,9 @@ As an example, you might enter the following:
 
 ## Authors
 Benedikt Korbach ([benedikt-korbach](https://github.com/benedikt-korbach))
+
 Niklas Pawelzik ([nikpaw](https://github.com/nikpaw))
+
 Justus von Samson-Himmelstjerna ([jvsamson](https://github.com/jvsamson))
+
 Alvaro Guijarro ([Alvaroguijarro97](https://github.com/Alvaroguijarro97))
