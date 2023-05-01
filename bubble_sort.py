@@ -25,4 +25,4 @@ def bubble_sort(data):
             # Swap if current element is greater than next
             if data[j] > data[j + 1]:
                 data[j], data[j + 1] = data[j + 1], data[j]
-        yield data
+        yield data, (j, j + 1)

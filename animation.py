@@ -36,15 +36,57 @@ def animate(data, delay, sorting_algorithm):
     sorting_algorithm (function): Sorting algorithm to be used.
     """
     fig, ax = plt.subplots()
-    rects = ax.bar(range(len(data)), data, align='edge')
+    color_array = ['gray'] * len(data)
+    rects = ax.bar(range(len(data)), data, color=color_array)
+    texts = [ax.text(i, v, str(v)) for i, v in enumerate(data)]
+    annotation = ax.annotate('', xy=(0,0), xytext=(-20,20), textcoords="offset points",
+                             bbox=dict(boxstyle="round", fc="w"),
+                             arrowprops=dict(arrowstyle="->"))
+    annotation.set_visible(False)
 
     ax.set_xlim(0, len(data))
     ax.set_ylim(0, int(1.1*max(data)))
 
-    for d in sorting_algorithm(data):
-        for rect, val in zip(rects, d):
-            rect.set_height(val)
-        fig.canvas.draw()
-        plt.pause(delay)
+    def update_colors_bubble(indices):
+        color_array = ['gray'] * len(data)
+        for i in indices:
+            color_array[i] = 'red'
+        for rect, color in zip(rects, color_array):
+            rect.set_color(color)
+
+    def update_colors_merge(indices):
+        color_array = ['gray'] * len(data)
+        for i in range(indices[0], indices[1]):
+            color_array[i] = 'red'
+        for rect, color in zip(rects, color_array):
+            rect.set_color(color)
+
+    def update_annotation_bubble(ind, val):
+        x,y = ind, val
+        annotation.xy = (x, y)
+        text = f"Comparing: {data[ind]} and {data[ind+1]}"
+        annotation.set_text(text)
+        annotation.set_visible(True)
+
+    if sorting_algorithm == bubble_sort:
+        for d, indices in sorting_algorithm(data):
+            for rect, val, text in zip(rects, d, texts):
+                rect.set_height(val)
+                text.set_text(str(val))
+                text.set_position((text.get_position()[0], val))
+            update_colors_bubble(indices)
+            if indices:
+                update_annotation_bubble(indices[0], data[indices[0]])
+            fig.canvas.draw()
+            plt.pause(delay)
+    else:
+        for d, indices in sorting_algorithm(data):
+            for rect, val, text in zip(rects, d, texts):
+                rect.set_height(val)
+                text.set_text(str(val))
+                text.set_position((text.get_position()[0], val))
+            update_colors_merge(indices)
+            fig.canvas.draw()
+            plt.pause(delay)
 
     plt.show()
