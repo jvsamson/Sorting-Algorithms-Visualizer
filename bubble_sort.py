@@ -8,6 +8,7 @@ Created on Mon Mai 01 12:04:12 2023
 - Alvaro Guijarro (GitHub: Alvaroguijarro97)
 """
 
+
 def bubble_sort(data):
     """
     Bubble sort algorithm.
@@ -16,13 +17,13 @@ def bubble_sort(data):
     data (list): List of integers to be sorted.
 
     Yields:
-    data (list): List of integers at each step of sorting.
+    tuple: Tuple containing the pass number, the list of integers at each step of sorting, 
+           the indices that were swapped, and the indices that are sorted.
     """
     n = len(data)
-    for i in range(n):
-        # Traverse through all array elements
-        for j in range(0, n - i - 1):
-            # Swap if current element is greater than next
-            if data[j] > data[j + 1]:
-                data[j], data[j + 1] = data[j + 1], data[j]
-        yield data, (j, j + 1)
+    for pass_num in range(n):
+        for i in range(n - pass_num - 1):
+            if data[i] > data[i + 1]:
+                data[i], data[i + 1] = data[i + 1], data[i]
+                yield pass_num, list(data), (i, i + 1), list(range(n - pass_num, n))
+        yield pass_num, list(data), (), list(range(n - pass_num, n))

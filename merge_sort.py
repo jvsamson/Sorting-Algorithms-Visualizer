@@ -8,7 +8,7 @@ Created on Mon Mai 01 12:04:12 2023
 - Alvaro Guijarro (GitHub: Alvaroguijarro97)
 """
 
-def merge_sort(data, start=0, end=None):
+def merge_sort(data, start=0, end=None, level=0, sorted_indices=[]):
     """
     Merge sort algorithm.
 
@@ -18,42 +18,40 @@ def merge_sort(data, start=0, end=None):
     Yields:
     tuple: List of integers at each step of sorting and range being merged.
     """
-    if end is None:
-        end = len(data)
-    
-    if end - start > 1:
-        mid = start + (end - start) // 2
+    if len(data) > 1:
+        mid = len(data) // 2
+        left_half = data[:mid]
+        right_half = data[mid:]
 
-        yield from merge_sort(data, start, mid)
-        yield from merge_sort(data, mid, end)
-
-        left_half = data[start:mid]
-        right_half = data[mid:end]
+        sorted_indices_left = yield from merge_sort(left_half, level=level+1, sorted_indices=sorted_indices)
+        sorted_indices_right = yield from merge_sort(right_half, level=level+1, sorted_indices=sorted_indices)
 
         i = 0
         j = 0
-        k = start
+        k = 0
 
         while i < len(left_half) and j < len(right_half):
             if left_half[i] < right_half[j]:
                 data[k] = left_half[i]
-                i += 1
+                i = i + 1
             else:
                 data[k] = right_half[j]
-                j += 1
-            k += 1
-            yield data, (start, end)
+                j = j + 1
+            k = k + 1
+            yield level, data, list(range(len(data))), []
 
         while i < len(left_half):
             data[k] = left_half[i]
-            i += 1
-            k += 1
-            yield data, (start, end)
+            i = i + 1
+            k = k + 1
+            yield level, data, list(range(len(data))), []
 
         while j < len(right_half):
             data[k] = right_half[j]
-            j += 1
-            k += 1
-            yield data, (start, end)
-    else:
-        yield data, (start, end)
+            j = j + 1
+            k = k + 1
+            yield level, data, list(range(len(data))), []
+
+        sorted_indices.extend(sorted_indices_left)
+        sorted_indices.extend(sorted_indices_right)
+    return sorted_indices
