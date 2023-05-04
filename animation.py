@@ -56,7 +56,7 @@ def animate(data, delay, sorting_algorithm):
         for rect, color in zip(rects, color_array):
             rect.set_color(color)
 
-    def update_colors_merge(compared_indices, sorted_indices):
+    def update_colors_merge(compared_indices, sorted_indices, merged_indices):
         color_array = ['gray'] * len(data)
         for i in compared_indices:
             color_array[i] = 'red'
@@ -80,15 +80,22 @@ def animate(data, delay, sorting_algorithm):
             plt.pause(delay)
     else:
         ax.set_title('Merge Sort (Time Complexity: O(n log n))')
-        for level, d, compared_indices, sorted_indices in sorting_algorithm(data):
+        merged_indices = set()
+        for level, d, indices, new_merged_indices in sorting_algorithm(data):
+            merged_indices.update(new_merged_indices)
+            sorted_indices = [i for i in range(len(data)) if i in merged_indices and (i == len(data) - 1 or data[i] <= data[i + 1])]
             pass_text.set_text(f'Level: {level}')
             for rect, val, text in zip(rects, d, texts):
                 rect.set_height(val)
                 text.set_text(str(val))
                 text.set_position((text.get_position()[0], val))
-            update_colors_merge(compared_indices, sorted_indices)
+            update_colors_merge(indices, sorted_indices, merged_indices)
             fig.canvas.draw()
             plt.pause(delay)
+
+        for rect in rects:
+            rect.set_color('blue')
+        fig.canvas.draw()
 
     end_time = time.time()
 

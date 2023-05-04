@@ -8,7 +8,7 @@ Created on Mon Mai 01 12:04:12 2023
 - Alvaro Guijarro (GitHub: Alvaroguijarro97)
 """
 
-def merge_sort(data, start=0, end=None, level=0, sorted_indices=[]):
+def merge_sort(data, level=0, sorted_indices=[]):
     """
     Merge sort algorithm.
 
@@ -23,8 +23,8 @@ def merge_sort(data, start=0, end=None, level=0, sorted_indices=[]):
         left_half = data[:mid]
         right_half = data[mid:]
 
-        sorted_indices_left = yield from merge_sort(left_half, level=level+1, sorted_indices=sorted_indices)
-        sorted_indices_right = yield from merge_sort(right_half, level=level+1, sorted_indices=sorted_indices)
+        sorted_indices_left = yield from merge_sort(left_half, level=level+1)
+        sorted_indices_right = yield from merge_sort(right_half, level=level+1)
 
         i = 0
         j = 0
@@ -38,19 +38,22 @@ def merge_sort(data, start=0, end=None, level=0, sorted_indices=[]):
                 data[k] = right_half[j]
                 j = j + 1
             k = k + 1
-            yield level, data, list(range(len(data))), []
+            #yield level, data, list(range(len(data))), []
+            yield level, data, list(range(len(data))), sorted_indices
 
         while i < len(left_half):
             data[k] = left_half[i]
             i = i + 1
             k = k + 1
-            yield level, data, list(range(len(data))), []
+            #yield level, data, list(range(len(data))), []
+            yield level, data, list(range(len(data))), sorted_indices
 
         while j < len(right_half):
             data[k] = right_half[j]
             j = j + 1
             k = k + 1
-            yield level, data, list(range(len(data))), []
+            #yield level, data, list(range(len(data))), []
+            yield level, data, list(range(len(data))), sorted_indices
 
         sorted_indices.extend(sorted_indices_left)
         sorted_indices.extend(sorted_indices_right)
