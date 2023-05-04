@@ -24,11 +24,10 @@ As an example, you might enter the following:
 - What delay time do you want? **0.3**
 
 ## Files
-- ([`bubble_sort.py`](https://github.com/jvsamson/Sorting-Algorithms-Visualizer/blob/main/bubble_sort.py)): Contains the Bubble Sort algorithm implementation.
-- `merge_sort.py`: Contains the Merge Sort algorithm implementation.
-- `animation.py`: Contains the functions to generate data and animate the sorting process using Matplotlib.
-- `interface.py`: The main script to run the visualizer. Users can choose the sorting algorithm and specify the parameters for the list of integers.
-- `requirements.txt`: Lists the required Python libraries.
+- [`bubble_sort.py`](https://github.com/jvsamson/Sorting-Algorithms-Visualizer/blob/main/bubble_sort.py): Contains the Bubble Sort algorithm implementation.
+- [`merge_sort.py`](https://github.com/jvsamson/Sorting-Algorithms-Visualizer/blob/main/merge_sort.py): Contains the Merge Sort algorithm implementation.
+- [`animation.py`](https://github.com/jvsamson/Sorting-Algorithms-Visualizer/blob/main/animation.py): Contains the functions to generate data and animate the sorting process using Matplotlib.
+- [`interface.py`](https://github.com/jvsamson/Sorting-Algorithms-Visualizer/blob/main/interface.py): The main script to run the visualizer. Users can choose the sorting algorithm and specify the parameters for the list of integers.
 
 ## Authors
 - Benedikt Korbach ([benedikt-korbach](https://github.com/benedikt-korbach))
