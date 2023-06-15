@@ -1,11 +1,8 @@
 """
 Created on Mon Mai 01 12:04:12 2023
 
-@authors:
-- Benedikt Korbach (GitHub: benedikt-korbach)
-- Niklas Pawelzik (GitHub: nikpaw)
+@author:
 - Justus von Samson-Himmelstjerna (GitHub: jvsamson)
-- Alvaro Guijarro (GitHub: Alvaroguijarro97)
 """
 
 def merge_sort(data, level=0, sorted_indices=[]):
